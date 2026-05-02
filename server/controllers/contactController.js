@@ -16,8 +16,7 @@ exports.submitContactForm = async (req, res) => {
       message
     });
 
-    // Optional: Send email notification
-    /*
+    // Send email notification
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -28,13 +27,12 @@ exports.submitContactForm = async (req, res) => {
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER, // Send to yourself
+      to: 'prateekmittal.design@gmail.com', // Recipient email
       subject: `New Portfolio Contact from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
     };
 
     await transporter.sendMail(mailOptions);
-    */
 
     res.status(201).json({
       success: true,

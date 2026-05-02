@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/contact', contactRoutes);
+app.use('/api/visitor', require('./controllers/visitorController').getVisitorCount);
 
 // Base route for testing
 app.get('/', (req, res) => {

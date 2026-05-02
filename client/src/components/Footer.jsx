@@ -1,7 +1,24 @@
 import React from 'react';
-import { ArrowUp, Linkedin, Instagram, Phone } from 'lucide-react';
+import { ArrowUp, Linkedin, Instagram, Phone, Users } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const Footer = () => {
+  const [visitorCount, setVisitorCount] = useState(0);
+
+  useEffect(() => {
+    const fetchVisitorCount = async () => {
+      try {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const response = await fetch(`${apiUrl}/api/visitor`);
+        const data = await response.json();
+        if (data.success) setVisitorCount(data.count);
+      } catch (err) {
+        console.error('Failed to fetch visitor count:', err);
+      }
+    };
+    fetchVisitorCount();
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -50,7 +67,11 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center text-sm gap-4 pt-8 border-t border-white/10">
           <p>&copy; {new Date().getFullYear()} Prateek. All rights reserved.</p>
-
+          <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/10 group hover:border-white/30 transition-all duration-300">
+            <Users size={14} className="text-gray-500 group-hover:text-white transition-colors" />
+            <span className="text-gray-500 group-hover:text-white transition-colors">Visitor Count:</span>
+            <span className="font-bold text-white tabular-nums">{visitorCount.toLocaleString()}</span>
+          </div>
         </div>
       </div>
     </footer>
