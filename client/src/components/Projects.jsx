@@ -5,10 +5,10 @@ import { ExternalLink, Github, X } from 'lucide-react';
 const projects = [
   {
     id: 1,
-    title: "Golden Hour",
-    category: "Couture",
-    tech: ["Hand Embroidery", "Petal Structure", "Silk", "Draping"],
-    description: "Golden Hour is a couture-inspired collection capturing the warm glow of sunset through sunflower motifs, layered petal structures, and radiant golden hues. The designs blend fluid silhouettes with rich textures to express natural elegance, movement, and the timeless beauty of light.",
+    title: "City in Motion",
+    category: "Streetwear",
+    tech: ["Digital Print", "Layering", "Technical Fabrics", "Oversized"],
+    description: "City in Motion captures the fast-paced rhythm of urban life, inspired by movement, speed, and blurred cityscapes. Dynamic silhouettes, layered streetwear, and streak-like graphics reflect energy, transition, and the constant flow of modern streets.",
     image: "/portfolio1.png",
     liveUrl: "#",
     githubUrl: "#"
@@ -23,12 +23,13 @@ const projects = [
     liveUrl: "#",
     githubUrl: "#"
   },
+
   {
     id: 3,
-    title: "City in Motion",
-    category: "Streetwear",
-    tech: ["Digital Print", "Layering", "Technical Fabrics", "Oversized"],
-    description: "City in Motion captures the fast-paced rhythm of urban life, inspired by movement, speed, and blurred cityscapes. Dynamic silhouettes, layered streetwear, and streak-like graphics reflect energy, transition, and the constant flow of modern streets.",
+    title: "Golden Hour",
+    category: "Couture",
+    tech: ["Hand Embroidery", "Petal Structure", "Silk", "Draping"],
+    description: "Golden Hour is a couture-inspired collection capturing the warm glow of sunset through sunflower motifs, layered petal structures, and radiant golden hues. The designs blend fluid silhouettes with rich textures to express natural elegance, movement, and the timeless beauty of light.",
     image: "/portfolio3.png",
     liveUrl: "#",
     githubUrl: "#"
@@ -61,8 +62,8 @@ const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const filteredProjects = activeFilter === "All" 
-    ? projects 
+  const filteredProjects = activeFilter === "All"
+    ? projects
     : projects.filter(p => p.category === activeFilter);
 
   return (
@@ -77,8 +78,8 @@ const Projects = () => {
             <h2 className="text-4xl md:text-5xl font-display font-bold uppercase mb-4">Featured Work.</h2>
             <p className="text-gray-500 max-w-md">A selection of my recent collections focusing on textile innovation, structural silhouettes, and cultural narratives.</p>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -88,11 +89,10 @@ const Projects = () => {
               <button
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  activeFilter === cat 
-                    ? 'bg-black text-white' 
-                    : 'bg-white text-black border border-gray-200 hover:border-black'
-                }`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeFilter === cat
+                  ? 'bg-black text-white'
+                  : 'bg-white text-black border border-gray-200 hover:border-black'
+                  }`}
               >
                 {cat}
               </button>
@@ -110,17 +110,15 @@ const Projects = () => {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
                 key={project.id}
-                className={`group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer ${
-                  filteredProjects.length === 5 && idx === 4 ? 'md:col-span-2' : ''
-                }`}
+                className={`group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer ${filteredProjects.length === 5 && idx === 4 ? 'md:col-span-2' : ''
+                  }`}
                 onClick={() => setSelectedProject(project)}
               >
-                <div className={`relative overflow-hidden bg-gray-50 ${
-                  filteredProjects.length === 5 && idx === 4 ? 'aspect-[21/9]' : 'aspect-video'
-                }`}>
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
+                <div className={`relative overflow-hidden bg-gray-50 ${filteredProjects.length === 5 && idx === 4 ? 'aspect-[21/9]' : 'aspect-video'
+                  }`}>
+                  <img
+                    src={project.image}
+                    alt={project.title}
                     className="w-full h-full object-contain transition-all duration-700"
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -154,30 +152,30 @@ const Projects = () => {
       {/* Project Modal */}
       <AnimatePresence>
         {selectedProject && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12"
           >
             <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedProject(null)}></div>
-            <motion.div 
+            <motion.div
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 50, opacity: 0 }}
               className="bg-white w-full max-w-4xl rounded-3xl overflow-hidden relative z-10 max-h-[90vh] flex flex-col"
             >
-              <button 
+              <button
                 onClick={() => setSelectedProject(null)}
                 className="absolute top-4 right-4 bg-black/10 hover:bg-black/20 p-2 rounded-full backdrop-blur-md transition-colors z-20"
               >
                 <X size={24} />
               </button>
-              
+
               <div className="relative aspect-[21/9] md:aspect-[21/9] w-full shrink-0 bg-gray-50">
                 <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-full object-contain" />
               </div>
-              
+
               <div className="p-8 md:p-12 overflow-y-auto">
                 <div className="flex flex-wrap gap-2 mb-4">
                   {selectedProject.tech.map(t => (
@@ -191,7 +189,7 @@ const Projects = () => {
                   {selectedProject.description}
                   {/* Expanded description can go here if provided in data */}
                 </p>
-                
+
                 <div className="flex gap-4">
                   <a href={selectedProject.liveUrl} className="flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors">
                     <ExternalLink size={18} /> Live Demo
