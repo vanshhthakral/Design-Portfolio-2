@@ -8,8 +8,8 @@ const skillsData = [
       { name: "Couture Draping", level: 90 },
       { name: "Pattern Making", level: 85 },
       { name: "Fashion Illustration", level: 95 },
-      { name: "Textile Design", level: 80 },
-      { name: "Hand Embroidery", level: 85 }
+
+
     ]
   },
   {
@@ -17,7 +17,7 @@ const skillsData = [
     items: [
       { name: "Adobe Illustrator", level: 95 },
       { name: "Adobe Photoshop", level: 90 },
-      { name: "CLO 3D", level: 80 },
+      { name: "Behance", level: 80 },
       { name: "InDesign", level: 85 }
     ]
   },
@@ -30,15 +30,7 @@ const skillsData = [
       { name: "Consumer Behavior", level: 75 }
     ]
   },
-  {
-    category: "Heritage & Craft",
-    items: [
-      { name: "Handloom Weaving", level: 80 },
-      { name: "Natural Dyeing", level: 85 },
-      { name: "Tribal Motifs", level: 90 },
-      { name: "Sustainable Fashion", level: 85 }
-    ]
-  }
+
 ];
 
 const marqueeItems = [
@@ -50,7 +42,7 @@ const Skills = () => {
     <section id="skills" className="py-24 bg-[#111111] text-white relative overflow-hidden">
       {/* Infinite Marquee */}
       <div className="absolute top-10 w-full overflow-hidden whitespace-nowrap flex py-4 opacity-5 pointer-events-none">
-        <motion.div 
+        <motion.div
           animate={{ x: [0, -1000] }}
           transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
           className="flex space-x-12 px-6"
@@ -62,7 +54,7 @@ const Skills = () => {
       </div>
 
       <div className="container mx-auto px-6 md:px-12 max-w-6xl relative z-10">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -83,13 +75,11 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-[#1a1a1a] p-8 rounded-2xl border border-white/10 hover:border-white/30 transition-colors duration-300 relative group overflow-hidden"
+              className="transition-colors duration-300 relative group"
             >
-              {/* Hover Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
 
               <h3 className="text-2xl font-display font-bold mb-6 tracking-wide relative z-10">{category.category}</h3>
-              
+
               <div className="space-y-6 relative z-10">
                 {category.items.map((skill, i) => (
                   <div key={i} className="space-y-2">
@@ -98,7 +88,7 @@ const Skills = () => {
                       <span>{skill.level}%</span>
                     </div>
                     <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                      <motion.div 
+                      <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
                         viewport={{ once: true }}

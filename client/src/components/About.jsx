@@ -69,7 +69,7 @@ const About = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-[#f5f5f5] p-6 rounded-2xl flex flex-col justify-center border border-transparent hover:border-gray-200 hover:shadow-lg transition-all duration-300 group"
+                className="flex flex-col justify-center transition-all duration-300 group"
               >
                 <h3 className="text-4xl font-display font-bold text-black mb-2 group-hover:scale-110 transition-transform origin-left">
                   {stat.value}
