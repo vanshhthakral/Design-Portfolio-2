@@ -1,6 +1,6 @@
-# Premium MERN Portfolio
+# Premium Fashion Portfolio
 
-A modern, minimal, high-end MERN stack portfolio featuring smooth animations and a premium UI/UX.
+A modern, minimal, high-end fashion designer portfolio featuring smooth animations and a premium UI/UX.
 
 ## Tech Stack
 - **Frontend**: React.js, Vite, Tailwind CSS, Framer Motion, Lucide React
