@@ -16,13 +16,11 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Use environment variable for API URL or fallback to relative path for production
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-      
-      const response = await fetch(`${apiUrl}/api/contact`, {
+      const response = await fetch('https://formspree.io/f/mvzlzovy', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify(formData),
       });
