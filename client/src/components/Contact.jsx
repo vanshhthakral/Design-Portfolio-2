@@ -41,7 +41,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 md:px-12 bg-[#111111] text-white relative">
+    <section id="contact" className="py-24 px-6 md:px-12 bg-transparent text-current relative transition-colors duration-300">
       <div className="container mx-auto max-w-6xl">
         <div className="grid lg:grid-cols-2 gap-16">
           
@@ -53,7 +53,7 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-5xl md:text-7xl font-display font-bold uppercase mb-8 leading-none">
-              Let's Build <br/><span className="text-gray-500">Something</span> <br/>Amazing.
+              Let's Build <br/><span className="text-blue-500">Something</span> <br/>Amazing.
             </h2>
             <p className="text-gray-400 text-lg max-w-md mb-12">
               Whether you have a project in mind, a question, or just want to say hi, my inbox is always open. Let's create something impactful together.
@@ -72,7 +72,7 @@ const Contact = () => {
                   href={social.href} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-14 h-14 rounded-full border border-gray-700 flex items-center justify-center hover:bg-white hover:text-black hover:border-white transition-all duration-300 transform hover:-translate-y-2"
+                  className="w-14 h-14 rounded-full border border-blue-500/30 flex items-center justify-center hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300 transform hover:-translate-y-2"
                 >
                   {social.icon}
                 </a>
@@ -86,7 +86,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-[#1a1a1a] p-8 md:p-12 rounded-3xl border border-white/10"
+            className="bg-blue-900/20 dark:bg-blue-950/30 p-8 md:p-12 rounded-3xl border border-blue-500/20"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
@@ -98,7 +98,7 @@ const Contact = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b border-gray-700 focus:border-white py-3 outline-none transition-colors"
+                  className="w-full bg-transparent border-b border-blue-500/30 focus:border-blue-400 py-3 outline-none transition-colors"
                   placeholder="John Doe"
                 />
               </div>
@@ -112,7 +112,7 @@ const Contact = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b border-gray-700 focus:border-white py-3 outline-none transition-colors"
+                  className="w-full bg-transparent border-b border-blue-500/30 focus:border-blue-400 py-3 outline-none transition-colors"
                   placeholder="john@example.com"
                 />
               </div>
@@ -126,7 +126,7 @@ const Contact = () => {
                   rows="4"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b border-gray-700 focus:border-white py-3 outline-none transition-colors resize-none"
+                  className="w-full bg-transparent border-b border-blue-500/30 focus:border-blue-400 py-3 outline-none transition-colors resize-none"
                   placeholder="Tell me about your project..."
                 ></textarea>
               </div>
@@ -134,7 +134,7 @@ const Contact = () => {
               <button 
                 type="submit" 
                 disabled={isSubmitting}
-                className="w-full bg-white text-black font-bold py-4 rounded-full hover:bg-gray-200 transition-colors flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full bg-blue-600 text-white font-bold py-4 rounded-full hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>
@@ -162,7 +162,7 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
             className={`fixed bottom-8 right-8 px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 z-50 font-medium ${
-              toast.type === 'success' ? 'bg-white text-black' : 'bg-red-500 text-white'
+              toast.type === 'success' ? 'bg-blue-600 dark:bg-blue-500 text-white' : 'bg-red-500 text-white'
             }`}
           >
             {toast.type === 'success' ? <CheckCircle size={20} /> : <XCircle size={20} />}

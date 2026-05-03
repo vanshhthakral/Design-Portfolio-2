@@ -10,7 +10,7 @@ const stats = [
 
 const About = () => {
   return (
-    <section id="about" className="py-24 px-6 md:px-12 bg-white relative">
+    <section id="about" className="py-24 px-6 md:px-12 bg-transparent relative transition-colors duration-300">
       <div className="container mx-auto max-w-6xl">
 
         <motion.div
@@ -20,10 +20,10 @@ const About = () => {
           transition={{ duration: 0.8 }}
           className="mb-16 md:mb-24"
         >
-          <h2 className="text-6xl md:text-8xl font-display font-bold uppercase text-gray-100 absolute -top-4 md:-top-10 left-0 md:left-10 z-0 select-none">
+          <h2 className="text-6xl md:text-8xl font-display font-bold uppercase text-blue-200/20 dark:text-white/[0.02] absolute -top-4 md:-top-10 left-0 md:left-10 z-0 select-none">
             About Me
           </h2>
-          <h2 className="text-4xl md:text-5xl font-display font-bold uppercase relative z-10">
+          <h2 className="text-4xl md:text-5xl font-display font-bold uppercase relative z-10 dark:text-white">
             About Me.
           </h2>
         </motion.div>
@@ -31,7 +31,7 @@ const About = () => {
         <div className="grid md:grid-cols-12 gap-12 lg:gap-24 relative z-10">
 
           {/* Text Content */}
-          <div className="md:col-span-7 space-y-8 text-lg text-gray-600 font-light leading-relaxed">
+          <div className="md:col-span-7 space-y-8 text-lg text-gray-600 dark:text-blue-200/80 font-light leading-relaxed">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -57,7 +57,7 @@ const About = () => {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="flex flex-col justify-center transition-all duration-300 group"
               >
-                <h3 className="text-4xl font-display font-bold text-black mb-2 group-hover:scale-110 transition-transform origin-left">
+                <h3 className="text-4xl font-display font-bold text-blue-900 dark:text-blue-400 mb-2 group-hover:scale-110 transition-transform origin-left">
                   {stat.value}
                 </h3>
                 <p className="text-sm text-gray-500 font-medium">
