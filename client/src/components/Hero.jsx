@@ -10,7 +10,7 @@ const Hero = () => {
       <div className="absolute top-1/3 right-10 w-72 h-72 bg-gray-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
 
       <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
-        
+
         {/* Left Content */}
         <div className="order-2 md:order-1 flex flex-col justify-center">
           <motion.div
@@ -18,15 +18,15 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-[0.9] tracking-tighter mb-6 uppercase">
-              Crafting <br/>
-              <span className="text-gray-500">Elegant</span> <br/>
-              Fashion <br/>
-              Stories
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-[0.9] tracking-tighter mb-6 uppercase">
+              Crafting bold Narratives <br />
+              <span className="text-gray-500">through</span> <br />
+              Fashion &<br />
+              Illustration.
             </h1>
           </motion.div>
 
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
@@ -35,7 +35,7 @@ const Hero = () => {
             I’m Prateek Mittal, a Fashion Designer specializing in couture, streetwear, and cultural heritage, blending traditional craftsmanship with modern silhouettes.
           </motion.p>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
@@ -46,42 +46,36 @@ const Hero = () => {
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a href="#" className="group flex items-center gap-2 bg-white text-black border border-gray-200 px-8 py-4 rounded-full font-medium hover:bg-gray-50 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
-              Download Resume
+              Resume
               <Download size={18} className="group-hover:-translate-y-1 transition-transform" />
             </a>
           </motion.div>
         </div>
 
         {/* Right Image */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
           className="order-1 md:order-2 relative flex justify-center items-center"
         >
+
+
           <div className="relative w-full max-w-md aspect-[4/5] md:aspect-[3/4]">
-            {/* Layered shadow frame */}
-            <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-              className="absolute inset-0 bg-gray-200 rounded-3xl translate-x-4 translate-y-4 md:translate-x-8 md:translate-y-8 -z-10"
-            ></motion.div>
-            
-            <motion.div 
-              animate={{ y: [0, -5, 0] }}
-              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-              className="absolute inset-0 border border-gray-300 rounded-3xl -translate-x-2 -translate-y-2 md:-translate-x-4 md:-translate-y-4 -z-10"
-            ></motion.div>
+
 
             <div className="w-full h-full rounded-3xl overflow-hidden bg-gray-100 relative group">
               {/* Replace with your image */}
-              <img 
-                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                alt="Portrait" 
+              <img
+                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="Portrait"
                 className="w-full h-full object-cover object-center filter grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+            <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
             </div>
+            <p className="mt-4 text-center text-xs uppercase tracking-[0.3em] text-gray-400 font-medium">
+              Fashion Designer & Illustrator
+            </p>
           </div>
         </motion.div>
 

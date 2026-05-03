@@ -2,9 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const stats = [
+  { value: '06+', label: 'Software Tools' },
+  { value: '50+', label: 'Illustrations' },
   { value: '05+', label: 'Collections' },
-  { value: '10+', label: 'Textiles Mastered' },
-  { value: '02+', label: 'Design Internships' },
   { value: '100+', label: 'Design Sketches' },
 ];
 
@@ -12,8 +12,8 @@ const About = () => {
   return (
     <section id="about" className="py-24 px-6 md:px-12 bg-white relative">
       <div className="container mx-auto max-w-6xl">
-        
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -29,7 +29,7 @@ const About = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-12 gap-12 lg:gap-24 relative z-10">
-          
+
           {/* Text Content */}
           <div className="md:col-span-7 space-y-8 text-lg text-gray-600 font-light leading-relaxed">
             <motion.p
@@ -38,26 +38,12 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              My journey in design started with a profound curiosity for how textiles and silhouettes can tell a story. Over time, that curiosity evolved into a deep-seated passion for crafting garments that bridge the gap between traditional craftsmanship and modern avant-garde aesthetics.
-            </motion.p>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              With a solid foundation in <strong className="font-semibold text-black">Fashion Design and Research</strong>, I approach every collection with a narrative-driven perspective. I believe that good design goes beyond aesthetics—it's about heritage, sustainability, and the emotional connection between the wearer and the garment.
+              A fashion design student driven by concept and creativity, blending cultural inspiration with modern aesthetics. I view fashion as a medium to express ideas, stories, and identity through thoughtful design and detail. My work focuses on building strong visual narratives, translating research and inspiration into wearable forms that are both expressive and relevant. I enjoy experimenting with silhouettes, textures, and concepts, constantly pushing my creative boundaries while maintaining a clear design direction. With a detail-oriented and evolving approach, I aim to create fashion that connects meaning with impact.Bold ideas. Sharper design
             </motion.p>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              Recently, I've expanded my expertise into <strong className="font-semibold text-black">Digital Fashion and 3D Prototyping</strong>, enabling me to not only conceptualize designs but also visualize and refine them with precision before they reach the atelier. This fusion of hand-crafted tradition and digital innovation defines my creative process.
-            </motion.p>
+
+
+
           </div>
 
           {/* Stats Grid */}

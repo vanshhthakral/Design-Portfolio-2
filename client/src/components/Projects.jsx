@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, X } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 const projects = [
   {
@@ -10,8 +10,7 @@ const projects = [
     tech: ["Digital Print", "Layering", "Technical Fabrics", "Oversized"],
     description: "City in Motion captures the fast-paced rhythm of urban life, inspired by movement, speed, and blurred cityscapes. Dynamic silhouettes, layered streetwear, and streak-like graphics reflect energy, transition, and the constant flow of modern streets.",
     image: "/portfolio1.png",
-    liveUrl: "#",
-    githubUrl: "#"
+    liveUrl: "https://www.behance.net/gallery/248669053/City-In-Motion?platform=direct"
   },
   {
     id: 2,
@@ -20,10 +19,8 @@ const projects = [
     tech: ["Tailoring", "Corsetry", "Weathered Fabrics", "Leather"],
     description: "The Captain Stays is a pirate-inspired collection rooted in maritime adventure, blending rugged masculinity with vintage naval elegance. Structured silhouettes, corsetry details, and rich, weathered tones reflect power, rebellion, and the enduring spirit of the sea.",
     image: "/portfolio2.png",
-    liveUrl: "#",
-    githubUrl: "#"
+    liveUrl: "https://www.behance.net/gallery/248668801/The-Captain-Stays?platform=direct"
   },
-
   {
     id: 3,
     title: "Golden Hour",
@@ -31,28 +28,25 @@ const projects = [
     tech: ["Hand Embroidery", "Petal Structure", "Silk", "Draping"],
     description: "Golden Hour is a couture-inspired collection capturing the warm glow of sunset through sunflower motifs, layered petal structures, and radiant golden hues. The designs blend fluid silhouettes with rich textures to express natural elegance, movement, and the timeless beauty of light.",
     image: "/portfolio3.png",
-    liveUrl: "#",
-    githubUrl: "#"
+    liveUrl: "https://www.behance.net/gallery/248665415/Golden-Hour-Collection?platform=direct"
   },
   {
     id: 4,
     title: "MIN Y/01",
     category: "Streetwear",
-    tech: ["Denim", "Pop Art", "Utilitarian", "Appliqué"],
+    tech: ["Denim", "Pop Art", "Appliqué"],
     description: "MIN Y/01 is a playful streetwear collection inspired by the iconic Minions, blending humor with bold urban fashion. Vibrant yellows, denim blues, and utilitarian silhouettes reflect energy, mischief, and a fun, youthful take on contemporary style.",
     image: "/portfolio4.png",
-    liveUrl: "#",
-    githubUrl: "#"
+    liveUrl: "https://www.behance.net/gallery/248668951/MIN-Y01?platform=direct"
   },
   {
     id: 5,
     title: "Bastar Roots",
     category: "Heritage",
-    tech: ["Handloom", "Indigenous Patterns", "Natural Dyes", "Tribal Art"],
+    tech: ["Handloom", "Natural Dyes", "Tribal Art"],
     description: "Bastar Roots is a culturally rich collection inspired by the tribal heritage of Bastar, celebrating traditional motifs, craftsmanship, and deep connection to nature. Earthy tones, handloom textures, and bold indigenous patterns reflect authenticity, strength, and the timeless spirit of Chhattisgarh’s tribal identity.",
     image: "/portfolio5.png",
-    liveUrl: "#",
-    githubUrl: "#"
+    liveUrl: "https://www.behance.net/gallery/248665729/Bastar-Roots-Collection?platform=direct"
   }
 ];
 
@@ -60,7 +54,7 @@ const categories = ["All", "Couture", "Streetwear", "Heritage", "Conceptual"];
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
-  const [selectedProject, setSelectedProject] = useState(null);
+
 
   const filteredProjects = activeFilter === "All"
     ? projects
@@ -103,27 +97,24 @@ const Projects = () => {
         <motion.div layout className="grid md:grid-cols-2 gap-8">
           <AnimatePresence>
             {filteredProjects.map((project, idx) => (
-              <motion.div
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4 }}
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 key={project.id}
-                className={`group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer ${filteredProjects.length === 5 && idx === 4 ? 'md:col-span-2' : ''
+                className={`group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 block ${filteredProjects.length === 5 && idx === 4 ? 'md:col-span-2' : ''
                   }`}
-                onClick={() => setSelectedProject(project)}
               >
                 <div className={`relative overflow-hidden bg-gray-50 ${filteredProjects.length === 5 && idx === 4 ? 'aspect-[21/9]' : 'aspect-video'
                   }`}>
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-contain transition-all duration-700"
+                    className="w-full h-full object-contain transition-all duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <span className="bg-white text-black px-6 py-3 rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                      View Details
+                      View on Behance
                     </span>
                   </div>
                 </div>
@@ -141,68 +132,14 @@ const Projects = () => {
                     )}
                   </div>
                   <h3 className="text-2xl font-bold font-display mb-2 group-hover:text-gray-600 transition-colors">{project.title}</h3>
-                  <p className="text-gray-500 text-sm line-clamp-2">{project.description}</p>
+                  <p className="text-gray-500 text-sm">{project.description}</p>
                 </div>
-              </motion.div>
+              </a>
             ))}
           </AnimatePresence>
         </motion.div>
       </div>
 
-      {/* Project Modal */}
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12"
-          >
-            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedProject(null)}></div>
-            <motion.div
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 50, opacity: 0 }}
-              className="bg-white w-full max-w-4xl rounded-3xl overflow-hidden relative z-10 max-h-[90vh] flex flex-col"
-            >
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 bg-black/10 hover:bg-black/20 p-2 rounded-full backdrop-blur-md transition-colors z-20"
-              >
-                <X size={24} />
-              </button>
-
-              <div className="relative aspect-[21/9] md:aspect-[21/9] w-full shrink-0 bg-gray-50">
-                <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-full object-contain" />
-              </div>
-
-              <div className="p-8 md:p-12 overflow-y-auto">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {selectedProject.tech.map(t => (
-                    <span key={t} className="text-sm font-medium px-3 py-1 bg-gray-100 text-gray-800 rounded-md">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                <h3 className="text-3xl md:text-5xl font-display font-bold mb-6">{selectedProject.title}</h3>
-                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                  {selectedProject.description}
-                  {/* Expanded description can go here if provided in data */}
-                </p>
-
-                <div className="flex gap-4">
-                  <a href={selectedProject.liveUrl} className="flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors">
-                    <ExternalLink size={18} /> Live Demo
-                  </a>
-                  <a href={selectedProject.githubUrl} className="flex items-center gap-2 border border-gray-200 text-black px-6 py-3 rounded-full font-medium hover:bg-gray-50 transition-colors">
-                    <Github size={18} /> Source Code
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 };
