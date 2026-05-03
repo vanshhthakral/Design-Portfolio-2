@@ -65,7 +65,7 @@ function App() {
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       
       <main>
-        <Hero />
+        <Hero theme={theme} />
         <About />
 
         <Projects />
