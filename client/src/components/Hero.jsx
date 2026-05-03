@@ -4,7 +4,7 @@ import { ArrowRight, Download } from 'lucide-react';
 
 const Hero = ({ theme }) => {
   const [isGrayscale, setIsGrayscale] = useState(true);
-  const heroImage = theme === 'dark' ? '/prateek-2.png' : '/prateek-light.PNG';
+  const heroImage = theme === 'dark' ? '/prateek-2.png' : '/prateek-light.png';
 
   // Mouse tilt effect
   const x = useMotionValue(0);
