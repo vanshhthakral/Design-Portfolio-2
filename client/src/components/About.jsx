@@ -20,9 +20,6 @@ const About = () => {
           transition={{ duration: 0.8 }}
           className="mb-16 md:mb-24"
         >
-          <h2 className="text-6xl md:text-8xl font-display font-bold uppercase text-blue-200/20 dark:text-white/[0.02] absolute -top-4 md:-top-10 left-0 md:left-10 z-0 select-none">
-            About Me
-          </h2>
           <h2 className="text-4xl md:text-5xl font-display font-bold uppercase relative z-10 dark:text-white">
             About Me.
           </h2>

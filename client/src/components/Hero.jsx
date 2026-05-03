@@ -1,9 +1,37 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
 
 const Hero = ({ theme }) => {
-  const heroImage = theme === 'dark' ? '/prateek-dark.PNG' : '/prateek-light.PNG';
+  const [isGrayscale, setIsGrayscale] = useState(true);
+  const heroImage = theme === 'dark' ? '/prateek-2.png' : '/prateek-light.png';
+
+  // Mouse tilt effect
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const xPct = (mouseX / width) - 0.5;
+    const yPct = (mouseY / height) - 0.5;
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
 
   return (
     <section id="home" className="min-h-screen flex items-center pt-24 pb-12 px-6 md:px-12 relative overflow-hidden transition-colors duration-500">
@@ -47,8 +75,8 @@ const Hero = ({ theme }) => {
               View Projects
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>
-            <a
-              href="/CreativeResume.pdf"
+            <a 
+              href="/resume.png" 
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-2 bg-white dark:bg-blue-900/20 text-black dark:text-blue-100 border border-gray-200 dark:border-blue-500/30 px-8 py-4 rounded-full font-medium hover:bg-gray-50 dark:hover:bg-blue-900/40 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
@@ -64,16 +92,22 @@ const Hero = ({ theme }) => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="order-1 md:order-2 relative flex justify-center items-center"
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+          className="order-1 md:order-2 relative flex justify-center items-center perspective-1000"
         >
-          <div className="relative w-full max-w-md aspect-[4/5] md:aspect-[3/4]">
-            <div className="w-full h-full rounded-3xl overflow-hidden bg-gray-100 dark:bg-blue-900/10 relative group border border-blue-500/10 dark:border-blue-500/20 shadow-2xl">
-              <img
+          <div className="relative w-full max-w-sm aspect-[4/5] md:aspect-[3/4] pointer-events-none">
+            <div className="w-full h-full rounded-3xl overflow-hidden bg-gray-100 dark:bg-blue-900/10 relative group border border-blue-500/10 dark:border-blue-500/20 shadow-2xl pointer-events-auto">
+              <motion.img
                 src={heroImage}
                 alt="Portrait"
-                className="w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-105"
+                onClick={() => setIsGrayscale(!isGrayscale)}
+                style={{ transform: "translateZ(75px)" }}
+                className={`w-full h-full object-cover object-center scale-105 transition-all duration-1000 cursor-pointer ${isGrayscale ? 'grayscale' : 'grayscale-0'
+                  }`}
               />
-              <div className="absolute inset-0 bg-blue-900/5 group-hover:bg-transparent transition-colors duration-500"></div>
+              <div className="absolute inset-0 bg-blue-900/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
             </div>
             <p className="mt-4 text-center text-xs uppercase tracking-[0.3em] text-gray-400 dark:text-blue-400 font-medium">
               Fashion Designer & Illustrator
